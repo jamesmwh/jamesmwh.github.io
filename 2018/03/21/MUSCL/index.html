@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next gemini use-motion" lang="zh-cn">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -44,6 +44,32 @@
 
 
 
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="https://www.google.com/fonts/css?family=Helvetica:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
 
 
 
@@ -75,7 +101,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '6.0.6',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
@@ -113,10 +139,11 @@
 <meta name="keywords" content="Conservation_laws">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MUSCL-Hancock Method">
-<meta property="og:url" content="http://yoursite.com/2018/03/21/MUSCL/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:url" content="jamesmwh.online/2018/03/21/MUSCL/index.html">
+<meta property="og:site_name" content="Jamesmwh">
 <meta property="og:description" content="Summary of the MUSCL-Hancock MethodFor a give domain $[0,L]$ and a mesh size $\Delta x$, determined by the choice of the number $M$ of computing cells, one first sets the initial conditions $U^0 \equi">
-<meta property="og:updated_time" content="2018-03-21T09:09:25.000Z">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-03-21T12:00:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MUSCL-Hancock Method">
 <meta name="twitter:description" content="Summary of the MUSCL-Hancock MethodFor a give domain $[0,L]$ and a mesh size $\Delta x$, determined by the choice of the number $M$ of computing cells, one first sets the initial conditions $U^0 \equi">
@@ -126,7 +153,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/21/MUSCL/"/>
+  <link rel="canonical" href="jamesmwh.online/2018/03/21/MUSCL/"/>
 
 
 
@@ -136,7 +163,7 @@
   };
 </script>
 
-  <title>MUSCL-Hancock Method | Hexo</title>
+  <title>MUSCL-Hancock Method | Jamesmwh</title>
   
 
 
@@ -176,7 +203,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
 
   
   
@@ -196,7 +223,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">Jamesmwh</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -244,9 +271,6 @@
   
 
   
-    
-
-  
 
   
 </nav>
@@ -265,6 +289,9 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
           
           <div id="content" class="content">
             
@@ -285,16 +312,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/21/MUSCL/">
+    <link itemprop="mainEntityOfPage" href="jamesmwh.online/2018/03/21/MUSCL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Jamesmwh">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://otbuklcz7.bkt.clouddn.com/%E5%AE%89%E5%8D%93%E5%A3%81%E7%BA%B8_%E5%8D%A1%E9%80%9A35d2.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Jamesmwh">
     </span>
 
     
@@ -364,8 +391,12 @@
 <h3 id="Operation-II-Computation-of-time-step"><a href="#Operation-II-Computation-of-time-step" class="headerlink" title="Operation (II): Computation of time step."></a>Operation (II): <strong>Computation of time step.</strong></h3><p>This is carried out according to<br>$$<br>\Delta t=C_{CFL}\frac{\Delta x}{S_{max}^{(n)}}<br>$$<br>where $\Delta x$ is the mesh spacing, $S_{max}^{(n)}$ is the maximum wave speed present at time level $n$ and $C_{CFL}$ coefficient, with $C_{CFL}\in (0,1]$. A practical choice is<br>$$<br>S_{max}^{(n)}=max_i{|u_{i}^n|+a_i^n}<br>$$<br>where the range of $i$ must include data arising from boundary from boundary conditions.<br>A choice of $C_{CLF}$ must be made at the beginning of the computations. One usually takes $C_{CLF}=0.9$. Recall however that the choice of $S_{max}^{(n)}$ is crucial and given that the practical choice above produces somewhat unreliable estimates for the true speeds we recommend that when solving problems with shock-tube like data, the CFL coefficient $C_{CLF}$ be set to small number, e.g. 0.2, for a few time steps.</p>
 <h3 id="Operation-III-Boundary-extrapolated-values"><a href="#Operation-III-Boundary-extrapolated-values" class="headerlink" title="Operation (III): Boundary extrapolated values."></a>Operation (III): <strong>Boundary extrapolated values.</strong></h3><p>This involves <strong>Step (I)</strong> and <strong>Step (II)</strong></p>
 <ul>
-<li><strong>Step (I): Data Reconstruction.</strong><br>In the following, we assume a choice of variables $W$ has been made. One possibility is the conserved variables $W = U$ of course; another choice is offered by the <em>primitive or physical</em> variables. For the Euler equations, these are $W=(\rho,u,p)^T$. Here we present the scheme in terms of the conserved variables $U$. In the data reconstruction step, data cell everage values $U_i^n$ are locally replaced by pievewise linear functions in each call $I_i=[x_{i-\frac{1}{2}},x_{i+\frac{1}{2}}]$, namely<br>$$<br>U_i(x)=U_i^n+\frac{(x-x_i)}{\Delta x} \Delta_i,~~x \in [0,\Delta x]<br>$$<br>where $\Delta_i$</li>
+<li><strong>Step (I): Data Reconstruction.</strong><br>In the following, we assume a choice of variables $W$ has been made. One possibility is the conserved variables $W = U$ of course; another choice is offered by the <em>primitive or physical</em> variables. For the Euler equations, these are $W=(\rho,u,p)^T$. Here we present the scheme in terms of the conserved variables $U$. In the data reconstruction step, data cell everage values $U_i^n$ are locally replaced by pievewise linear functions in each call $I_i=[x_{i-\frac{1}{2}},x_{i+\frac{1}{2}}]$, namely<br>$$<br>U_i(x)=U_i^n+\frac{(x-x_i)}{\Delta x} \Delta_i,~~x \in [0,\Delta x]<br>$$<br>where $\Delta_i$ is a suitably chosen <em>slope</em> vector (actually a difference) of $U_i(x)$ in cell $I_i$. The extreme points $x = 0$ and $x = \Delta x$, in local co-ordinates, correspond to the intercell houndaries $x_{i-\frac{1}{2}}$ and $x_{i+\frac{1}{2}}$, in global co-ordinates, respectively. The values of $U_i(x)$ at the exteme points are<br>$$<br>U_i^L=U_i^n-\frac{1}{2}\Delta_i;\\<br>U_i^R=U_i^n+\frac{1}{2}\Delta_i<br>$$<br>and are usually called <em>boundary extrapolated values</em>. Note that $U$ and $\Delta_i$ are vectors of three components for the Euler equations and thus there six scalar extrapolated values in above fomulae.</li>
+<li><strong>Step (II): Evolution.</strong><br>For each cell $I_i$, the boundary extrapolated values $U_i^L$, $U_i^R$ are <em>evolved</em> by a time $\frac{1}{2} \Delta t$, according to</li>
 </ul>
+<p>$$<br>\overline{U}_i^L=U_i^L+\frac{1}{2}\frac{\Delta t}{\Delta x}[F(U_i^L) - F(U_i^R)],\\<br>\overline{U}_i^R=U_i^R+\frac{1}{2}\frac{\Delta t}{\Delta x}[F(U_i^L) - F(U_i^R)]<br>$$</p>
+<p>Note that this evolution step is entriely contained in each cell $I_i$, as the <em>intercell</em> fluxes are evaluated at the boundary extrapolated values of each cell. At each intercell position $i + \frac{1}{2}$ there are two fluxes, namely $F(U_i^R)$ and $F(U_{i+1}^L)$, which are in general distinct. This does not really affect the <em>conservative</em> character of the overall method, as this step is only an intermediate step; the intercell flux $F_{i+\frac{1}{2}}$ to be used in the conservative formula is yet to be evaluated;<br>In Step (I) and Step (II), the slopes $\Delta_i$ are replaced by the limited slopes $\overline{\Delta}_i$, which are to operation results in TVD, evolved boundary extrapolated values $\overline{U}_i^{L,R}$, for each cell $i$.</p>
+<h3 id="Operation-IV-Solution-of-Riemann-problem"><a href="#Operation-IV-Solution-of-Riemann-problem" class="headerlink" title="Operation (IV): Solution of Riemann problem."></a>Operation (IV): <strong>Solution of Riemann problem.</strong></h3><p>At each intercell position $i + \frac{1}{2}$ one finds the solution of Riemann problem with data</p>
 
       
     </div>
@@ -399,8 +430,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/21/M-thod/" rel="next" title="M_thod">
-                <i class="fa fa-chevron-left"></i> M_thod
+              <a href="/2018/03/20/北京之旅/" rel="next" title="第一次的北京之旅">
+                <i class="fa fa-chevron-left"></i> 第一次的北京之旅
               </a>
             
           </div>
@@ -470,8 +501,12 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">John Doe</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <img class="site-author-image" itemprop="image"
+                src="http://otbuklcz7.bkt.clouddn.com/%E5%AE%89%E5%8D%93%E5%A3%81%E7%BA%B8_%E5%8D%A1%E9%80%9A35d2.jpg"
+                alt="Jamesmwh" />
+            
+              <p class="site-author-name" itemprop="name">Jamesmwh</p>
+              <p class="site-description motion-element" itemprop="description">日々私たちが过ごしている日常は、実は奇迹の连続なのかもしれない。</p>
           </div>
 
           
@@ -481,7 +516,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -540,6 +575,20 @@
 
           
           
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jiaxi.me" title="JiaxiLiu" target="_blank">JiaxiLiu</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
 
           
             
@@ -559,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary-of-the-MUSCL-Hancock-Method"><span class="nav-number">1.</span> <span class="nav-text">Summary of the MUSCL-Hancock Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Operation-I-Boundary-condition"><span class="nav-number">1.0.1.</span> <span class="nav-text">Operation (I): Boundary condition.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Operation-II-Computation-of-time-step"><span class="nav-number">1.0.2.</span> <span class="nav-text">Operation (II): Computation of time step.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Operation-III-Boundary-extrapolated-values"><span class="nav-number">1.0.3.</span> <span class="nav-text">Operation (III): Boundary extrapolated values.</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary-of-the-MUSCL-Hancock-Method"><span class="nav-number">1.</span> <span class="nav-text">Summary of the MUSCL-Hancock Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Operation-I-Boundary-condition"><span class="nav-number">1.0.1.</span> <span class="nav-text">Operation (I): Boundary condition.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Operation-II-Computation-of-time-step"><span class="nav-number">1.0.2.</span> <span class="nav-text">Operation (II): Computation of time step.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Operation-III-Boundary-extrapolated-values"><span class="nav-number">1.0.3.</span> <span class="nav-text">Operation (III): Boundary extrapolated values.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Operation-IV-Solution-of-Riemann-problem"><span class="nav-number">1.0.4.</span> <span class="nav-text">Operation (IV): Solution of Riemann problem.</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -583,7 +632,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">Jamesmwh</span>
 
   
 
@@ -601,7 +650,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.6</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.0.6</div>
 
 
 
@@ -690,6 +739,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.6"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
