@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="“ All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by“ the call to :runtime you can find below.  If you wish to change any of those">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vimrc">
+<meta property="og:url" content="http://yoursite.com/2017/08/24/vimrc/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="“ All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by“ the call to :runtime you can find below.  If you wish to change any of those">
+<meta property="og:updated_time" content="2017-10-06T13:01:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vimrc">
+<meta name="twitter:description" content="“ All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by“ the call to :runtime you can find below.  If you wish to change any of those">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/24/vimrc/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>vimrc | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+</li>
+
+      
+
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/24/vimrc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vimrc</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-24T13:40:41+08:00">2017-08-24</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>“ All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by<br>“ the call to :runtime you can find below.  If you wish to change any of those<br><a id="more"></a><br>“ settings, you should do it in this file (/etc/vim/vimrc), since debian.vim<br>“ will be overwritten everytime an upgrade of the vim packages is performed.<br>“ It is recommended to make changes after sourcing debian.vim since it alters<br>“ the value of the ‘compatible’ option.<br>“ This line should not be removed as it ensures that various options are<br>“ properly set to work with the Vim-related packages available in Debian.<br>runtime! debian.vim<br>“ Uncomment the next line to make Vim more Vi-compatible<br>“ NOTE: debian.vim sets ‘nocompatible’.  Setting ‘compatible’ changes numerous<br>“ options, so any other options should be set AFTER setting ‘compatible’.<br>“set compatible</p>
+<p>“ Vim5 and later versions support syntax highlighting. Uncommenting the next<br>“ line enables syntax highlighting by default.<br>if has(“syntax”)<br>  syntax on<br>endif</p>
+<p>“ If using a dark background within the editing area and syntax highlighting<br>“ turn on this option as well<br>“set background=dark</p>
+<p>“ Uncomment the following to have Vim jump to the last position when<br>“ reopening a file<br>“if has(“autocmd”)<br>“  au BufReadPost * if line(“‘\””) &gt; 1 &amp;&amp; line(“‘\””) &lt;= line(“$”) | exe “normal! g’\”” | endif<br>“endif</p>
+<p>“ Uncomment the following to have Vim load indentation rules and plugins<br>“ according to the detected filetype.<br>“if has(“autocmd”)<br>“  filetype plugin indent on<br>“endif</p>
+<p>“ The following are commented out as they cause vim to behave a lot<br>“ differently from regular Vi. They are highly recommended though.<br>“set showcmd        “ Show (partial) command in status line.<br>“set showmatch        “ Show matching brackets.<br>“set ignorecase        “ Do case insensitive matching<br>“set smartcase        “ Do smart case matching<br>“set incsearch        “ Incremental search<br>“set autowrite        “ Automatically save before commands like :next and :make<br>“set hidden        “ Hide buffers when they are abandoned<br>“set mouse=a        “ Enable mouse usage (all modes)</p>
+<p>“ Source a global configuration file if available<br>if filereadable(“/etc/vim/vimrc.local”)<br>  source /etc/vim/vimrc.local<br>endif<br>set nu<br>set tabstop=2<br>set softtabstop=2<br>set shiftwidth=2<br>set number<br>set laststatus=2<br>set cursorline<br>set showcmd<br>set scrolloff=3<br>set ruler<br>set mouse=a<br>set selection=exclusive<br>set selectmode=mouse,key<br>set autoindent<br>set completeopt=preview,menu<br>syntax enable<br>set background=dark<br>colorscheme molokai</p>
+<p>:inoremap ( ()<esc>i<br>:inoremap ) <c-r>=ClosePair(‘)’)<cr><br>:inoremap { {<cr>}<esc>i<cr><esc>ki<tab><tab><br>:inoremap } <c-r>=ClosePair(‘}’)<cr><br>:inoremap [ []<esc>i<br>:inoremap ] <c-r>=ClosePair(‘]’)<cr><br>:inoremap “ “”<esc>i<br>:inoremap ‘ ‘’<esc>i<br>function! ClosePair(char)<br>        if getline(‘.’)[col(‘.’) - 1] == a:char<br>            return “\<right>“<br>        else<br>            return a:char<br>        endif<br>endfunction<br>filetype plugin indent on<br>set completeopt=longest,menu</right></esc></esc></cr></c-r></esc></cr></c-r></tab></tab></esc></cr></esc></cr></cr></c-r></esc></p>
+<p>set nocompatible               “ be iMproved<br>filetype off                   “ required!</p>
+<p>set rtp+=~/.vim/bundle/vundle/<br>call vundle#rc()</p>
+<p>“ let Vundle manage Vundle<br>“ required!<br>Bundle ‘gmarik/vundle’</p>
+<p>“ My Bundles here:<br>“<br>“ original repos on github<br>Bundle ‘tpope/vim-fugitive’<br>Bundle ‘Lokaltog/vim-easymotion’<br>Bundle ‘Lokaltog/vim-powerline’<br>Bundle ‘tpope/vim-commentary’<br>Bundle ‘scrooloose/nerdtree’<br>Bundle ‘scrooloose/nerdcommenter’<br>Bundle ‘terryma/vim-multiple-cursors’<br>Bundle ‘rstacruz/sparkup’, {‘rtp’: ‘vim/‘}<br>Bundle ‘tpope/vim-rails.git’<br>“ vim-scripts repos<br>Bundle ‘L9’<br>Bundle ‘FuzzyFinder’<br>“ non github repos<br>Bundle ‘git://git.wincent.com/command-t.git’<br>“ …</p>
+<p>filetype plugin indent on     “ required!<br>“<br>“ Brief help  – 此处后面都是vundle的使用命令<br>“ :BundleList          - list configured bundles<br>“ :BundleInstall(!)    - install(update) bundles<br>“ :BundleSearch(!) foo - search(or refresh cache first) for foo<br>“ :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles<br>“<br>“ see :h vundle for more details or wiki for FAQ<br>“ NOTE: comments after Bundle command are not allowed..<br>“<br>“ vim-powerline plugin<br>“”set laststatus=2<br>“”set t_Co=256<br>“”let g:Powerline_symbols = ‘unicode’<br>“”set encoding=utf8<br>set guifont=PowerlineSymbols\ for\ Powerline<br>set nocompatible<br>set t_Co=256<br>“let g:Powerline_symbols = ‘unicode’</p>
+<p>“ nerdtree plugin<br>nmap <f2> :NERDTreeToggle<cr><br>let mapleader=”,”<br>“ REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.<br>filetype plugin on</cr></f2></p>
+<p>“ IMPORTANT: win32 users will need to have ‘shellslash’ set so that latex<br>“ can be called correctly.<br>set shellslash</p>
+<p>“ IMPORTANT: grep will sometimes skip displaying the file name if you<br>“ search in a singe file. This will confuse Latex-Suite. Set your grep<br>“ program to always generate a file-name.<br>set grepprg=grep\ -nH\ $*</p>
+<p>“ OPTIONAL: This enables automatic indentation as you type.<br>filetype indent on</p>
+<p>“ OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to<br>“ ‘plaintex’ instead of ‘tex’, which results in vim-latex not being loaded.<br>“ The following changes the default filetype back to ‘tex’:<br>let g:tex_flavor=’latex’</p>
+<p>:inoremap #head #include<iostream> <cr>#include<cmath> <cr>#include<cstdlib><cr>#include “MathGL.h”<cr>static double tol = 10e-8;<cr><cr>using namespace std;<cr><cr><br>:inoremap #init int main(int argc, char *argv[])<cr>{<cr>return 0;<cr>}<esc>ki<cr><cr><esc>kki<tab><br>:inoremap #plot double high[2] = {1.0, 1.0};<cr>double low[2] = {-1.0, -1.0};<cr>mglInitDrawingArea(low[0], low[1], high[0], high[1]);<cr>mglInitialization(argc, argv);<cr><cr><cr>mglFlush();<br>:inoremap fori for(int i = 0; i &lt; n; i++){<cr>}<esc>i<cr><esc>ki<tab><br>:inoremap forj for(int j = 0; j &lt; n; j++){<cr>}<esc>i<cr><esc>ki<tab><br>:inoremap fork for(int k = 0; k &lt; n; k++){<cr>}<esc>i<cr><esc>ki<tab><br>:inoremap forp for(int p = 0; p &lt; n; p++){<cr>}<esc>i<cr><esc>ki<tab><br>:inoremap forq for(int q = 0; q &lt; n; q++){<cr>}<esc>i<cr><esc>ki<tab><br>:inoremap fort for(int t = 0; t &lt; n; t++){<cr>}<esc>i<cr><esc>ki<tab></tab></esc></cr></esc></cr></tab></esc></cr></esc></cr></tab></esc></cr></esc></cr></tab></esc></cr></esc></cr></tab></esc></cr></esc></cr></tab></esc></cr></esc></cr></cr></cr></cr></cr></cr></cr></tab></esc></cr></cr></esc></cr></cr></cr></cr></cr></cr></cr></cr></cr></cstdlib></cr></cmath></cr></iostream></p>
+<p>:inoremap for1i for(int i = 1; i &lt;= n; i++){<cr>}<esc>i<cr><esc>ki<tab><br>:inoremap for1j for(int j = 1; j &lt;= n; j++){<cr>}<esc>i<cr><esc>ki<tab><br>:inoremap for1k for(int k = 1; k &lt;= n; k++){<cr>}<esc>i<cr><esc>ki<tab><br>:inoremap for1p for(int p = 1; p &lt;= n; p++){<cr>}<esc>i<cr><esc>ki<tab><br>:inoremap for1q for(int q = 1; q &lt;= n; q++){<cr>}<esc>i<cr><esc>ki<tab><br>:inoremap for1t for(int t = 1; t &lt;= n; t++){<cr>}<esc>i<cr><esc>ki<tab><br>:inoremap :// //—————————————-<br>:inoremap :sp cout&lt;&lt;”———–set point————-“&lt;&lt;endl;</tab></esc></cr></esc></cr></tab></esc></cr></esc></cr></tab></esc></cr></esc></cr></tab></esc></cr></esc></cr></tab></esc></cr></esc></cr></tab></esc></cr></esc></cr></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/23/conservation-laws/" rel="next" title="Conservation laws">
+                <i class="fa fa-chevron-left"></i> Conservation laws
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/06/Suzhou/" rel="prev" title="游记">
+                游记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.6</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

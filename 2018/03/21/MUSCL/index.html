@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Summary of the MUSCL-Hancock MethodFor a give domain $[0,L]$ and a mesh size $\Delta x$, determined by the choice of the number $M$ of computing cells, one first sets the initial conditions $U^0 \equi">
+<meta name="keywords" content="Conservation_laws">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MUSCL-Hancock Method">
+<meta property="og:url" content="http://yoursite.com/2018/03/21/MUSCL/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Summary of the MUSCL-Hancock MethodFor a give domain $[0,L]$ and a mesh size $\Delta x$, determined by the choice of the number $M$ of computing cells, one first sets the initial conditions $U^0 \equi">
+<meta property="og:updated_time" content="2018-03-21T09:09:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MUSCL-Hancock Method">
+<meta name="twitter:description" content="Summary of the MUSCL-Hancock MethodFor a give domain $[0,L]$ and a mesh size $\Delta x$, determined by the choice of the number $M$ of computing cells, one first sets the initial conditions $U^0 \equi">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/21/MUSCL/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>MUSCL-Hancock Method | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+</li>
+
+      
+
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/21/MUSCL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MUSCL-Hancock Method</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-21T12:38:03+08:00">2018-03-21</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Summary-of-the-MUSCL-Hancock-Method"><a href="#Summary-of-the-MUSCL-Hancock-Method" class="headerlink" title="Summary of the MUSCL-Hancock Method"></a>Summary of the MUSCL-Hancock Method</h1><p>For a give domain $[0,L]$ and a mesh size $\Delta x$, determined by the choice of the number $M$ of computing cells, one first sets the initial conditions $U^0 \equiv U(x,0)$ at time $t = 0$. Then, for each time step $n$ one performs the following operations<br><a id="more"></a> </p>
+<h3 id="Operation-I-Boundary-condition"><a href="#Operation-I-Boundary-condition" class="headerlink" title="Operation (I): Boundary condition."></a>Operation (I): <strong>Boundary condition.</strong></h3><p>This is carried out according to these boundary condition:</p>
+<ul>
+<li><strong><em>Transmissive boudary conditions</em></strong></li>
+</ul>
+<p>$$<br>W_0^n=W_1^n;\\<br>W_{-1}^n=W_2^n;\\<br>W_{M+1}^n=W_M^n;\\<br>W_{M+2}^n=W_{M-1}^n<br>$$<br>where $W$ may be the vector of conserved variables or some other variables, such as the primitive variables.</p>
+<ul>
+<li><strong><em>Reflective boundary condidtions</em></strong></li>
+</ul>
+<p>$$<br>\rho_{M+1}^n=\rho_{M}^n;u_{M+1}^n=-u_M^n+2u_{wall};p_{M+1}^n=p_M^n,\\<br>\rho_{M+2}^n=\rho_{M-1}^n;u_{M+2}^n=-u_{M-1}^n+2u_{wall};p_{M+2}^n=p_{M-1}^n.<br>$$<br>where $u_{wall}$ is the speed of a reflective solid boundary at $x=L$.</p>
+<h3 id="Operation-II-Computation-of-time-step"><a href="#Operation-II-Computation-of-time-step" class="headerlink" title="Operation (II): Computation of time step."></a>Operation (II): <strong>Computation of time step.</strong></h3><p>This is carried out according to<br>$$<br>\Delta t=C_{CFL}\frac{\Delta x}{S_{max}^{(n)}}<br>$$<br>where $\Delta x$ is the mesh spacing, $S_{max}^{(n)}$ is the maximum wave speed present at time level $n$ and $C_{CFL}$ coefficient, with $C_{CFL}\in (0,1]$. A practical choice is<br>$$<br>S_{max}^{(n)}=max_i{|u_{i}^n|+a_i^n}<br>$$<br>where the range of $i$ must include data arising from boundary from boundary conditions.<br>A choice of $C_{CLF}$ must be made at the beginning of the computations. One usually takes $C_{CLF}=0.9$. Recall however that the choice of $S_{max}^{(n)}$ is crucial and given that the practical choice above produces somewhat unreliable estimates for the true speeds we recommend that when solving problems with shock-tube like data, the CFL coefficient $C_{CLF}$ be set to small number, e.g. 0.2, for a few time steps.</p>
+<h3 id="Operation-III-Boundary-extrapolated-values"><a href="#Operation-III-Boundary-extrapolated-values" class="headerlink" title="Operation (III): Boundary extrapolated values."></a>Operation (III): <strong>Boundary extrapolated values.</strong></h3><p>This involves <strong>Step (I)</strong> and <strong>Step (II)</strong></p>
+<ul>
+<li><strong>Step (I): Data Reconstruction.</strong><br>In the following, we assume a choice of variables $W$ has been made. One possibility is the conserved variables $W = U$ of course; another choice is offered by the <em>primitive or physical</em> variables. For the Euler equations, these are $W=(\rho,u,p)^T$. Here we present the scheme in terms of the conserved variables $U$. In the data reconstruction step, data cell everage values $U_i^n$ are locally replaced by pievewise linear functions in each call $I_i=[x_{i-\frac{1}{2}},x_{i+\frac{1}{2}}]$, namely<br>$$<br>U_i(x)=U_i^n+\frac{(x-x_i)}{\Delta x} \Delta_i,~~x \in [0,\Delta x]<br>$$<br>where $\Delta_i$</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Conservation-laws/" rel="tag"># Conservation_laws</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/21/M-thod/" rel="next" title="M_thod">
+                <i class="fa fa-chevron-left"></i> M_thod
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary-of-the-MUSCL-Hancock-Method"><span class="nav-number">1.</span> <span class="nav-text">Summary of the MUSCL-Hancock Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Operation-I-Boundary-condition"><span class="nav-number">1.0.1.</span> <span class="nav-text">Operation (I): Boundary condition.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Operation-II-Computation-of-time-step"><span class="nav-number">1.0.2.</span> <span class="nav-text">Operation (II): Computation of time step.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Operation-III-Boundary-extrapolated-values"><span class="nav-number">1.0.3.</span> <span class="nav-text">Operation (III): Boundary extrapolated values.</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.6</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
