@@ -24,7 +24,6 @@
 
 
 
-
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
@@ -128,6 +127,16 @@
 
 
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
   <meta name="description" content="“ All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by“ the call to :runtime you can find below.  If you wish to change any of those">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vimrc">
@@ -271,18 +280,7 @@
   
 
 
-
-
-<script>
-    (function(){
-        if(''){
-            if (prompt('请输入文章密码') !== ''){
-                alert('密码错误！');
-                history.back();
-            }
-        }
-    })();
-</script> </div>
+ </div>
     </header>
 
     

@@ -24,7 +24,6 @@
 
 
 
-
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
@@ -128,6 +127,16 @@
 
 
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
   <meta name="description" content="Linearization of nonlinear systemsConsider a nonlinear system of conservation laws$$u_t+f(u)_x=0,$$where $u:R \times R \rightarrow R^m$ and $f:R^m \rightarrow R^m$. This can be written in the quasilin">
 <meta name="keywords" content="Conservation_laws">
 <meta property="og:type" content="article">
@@ -272,18 +281,7 @@
   
 
 
-
-
-<script>
-    (function(){
-        if(''){
-            if (prompt('请输入文章密码') !== ''){
-                alert('密码错误！');
-                history.back();
-            }
-        }
-    })();
-</script> </div>
+ </div>
     </header>
 
     

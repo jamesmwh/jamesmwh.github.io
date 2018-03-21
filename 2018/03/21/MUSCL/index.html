@@ -24,7 +24,6 @@
 
 
 
-
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
@@ -128,6 +127,16 @@
 
 
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
   <meta name="description" content="Summary of the MUSCL-Hancock MethodFor a give domain $[0,L]$ and a mesh size $\Delta x$, determined by the choice of the number $M$ of computing cells, one first sets the initial conditions $U^0 \equi">
 <meta name="keywords" content="Conservation_laws">
 <meta property="og:type" content="article">
@@ -272,18 +281,7 @@
   
 
 
-
-
-<script>
-    (function(){
-        if(''){
-            if (prompt('请输入文章密码') !== ''){
-                alert('密码错误！');
-                history.back();
-            }
-        }
-    })();
-</script> </div>
+ </div>
     </header>
 
     

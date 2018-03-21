@@ -24,7 +24,6 @@
 
 
 
-
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
@@ -128,6 +127,16 @@
 
 
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
   <meta name="description" content="代数基础定义 圈圈是看过并理解  打钩是可以自己推导并记住 定义 1.1R是一个环，M是Abel群，若存在一个映射RxM-&amp;gt;M &amp;amp; (a,x)-&amp;gt;ax， 满足以下性质：  a(x+y)=ax+ay (a+b)x=ax+bx (ab)x=a(bx) 1x=x, x,y in M, a,b in R  则M是一个R左模（left-R-module）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="代数基础">
@@ -271,18 +280,7 @@
   
 
 
-
-
-<script>
-    (function(){
-        if(''){
-            if (prompt('请输入文章密码') !== ''){
-                alert('密码错误！');
-                history.back();
-            }
-        }
-    })();
-</script> </div>
+ </div>
     </header>
 
     
